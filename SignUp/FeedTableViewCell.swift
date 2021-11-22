@@ -22,11 +22,9 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var LikeButton: UIButton!
     
     //Mark: Action
-        var clicked = false
+    
     @IBAction func Liked(_ sender: Any) {
-        clicked = true
-        if clicked {
-        }
+        
     }
     
     

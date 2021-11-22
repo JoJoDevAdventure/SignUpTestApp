@@ -20,12 +20,21 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var TableFeed: UITableView!
     
-
+    @IBOutlet weak var DisconnectView: UIView!
+    
+    @IBOutlet weak var DisconnectButton: UIBarButtonItem!
+    
+    @IBOutlet weak var NoButton: UIButton!
+    @IBOutlet weak var YesButton: UIButton!
+    
+    
     override func viewDidLoad() {
+        buttonSetup()
         super.viewDidLoad()
         TableFeed.register(FeedTableViewCell.nib(), forCellReuseIdentifier: FeedTableViewCell.identifier)
         TableFeed.delegate = self
         TableFeed.dataSource = self
+        DisconnectView.isHidden = true
         
         Models.append(ChillaxPost(FeedNumberOfLikes: 150,
                                   FeedUserName: "Joseph",
@@ -64,6 +73,36 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    //Mark : Actions
+    
+    
+    func buttonSetup(){
+        YesButton.backgroundColor = .clear
+        YesButton.layer.cornerRadius = 5
+        YesButton.layer.borderWidth = 1
+        YesButton.layer.borderColor = UIColor.red.cgColor
+        
+        NoButton.backgroundColor = .clear
+        NoButton.layer.cornerRadius = 5
+        NoButton.layer.borderWidth = 1
+        NoButton.layer.borderColor = UIColor.systemBlue.cgColor
+    }
+    
+    @IBAction func ShowSignOutMessage(_ sender: Any) {
+        DisconnectView.isHidden = false
+    }
+    
+    @IBAction func YesDisconnect(_ sender: Any) {
+        performSegue(withIdentifier: "Disconnect", sender: self)
+    }
+    
+    
+    @IBAction func NoDont(_ sender: Any) {
+        DisconnectView.isHidden = true
+    }
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
@@ -89,7 +128,6 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
     
 }
 

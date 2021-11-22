@@ -37,12 +37,14 @@ class LogInController: UIViewController {
         Auth.auth().signIn(withEmail: emailTextFiels.text!, password: PasswordTextField.text!) { (AuthResult ,error) in
             if error != nil {
                 print(error.debugDescription)
-        }
-        
+            } else {
+                self.performSegue(withIdentifier: "GoToHome2", sender: self)
+            }
     }
-        
 }
     
+    
+    //Mark : private functions
     
     
     @objc private func hideKeyboard() {
@@ -50,11 +52,11 @@ class LogInController: UIViewController {
         PasswordTextField.resignFirstResponder()
     }
     
-    //Mark : private functions
     
     private func setupButtons(){
         logInButton.layer.cornerRadius = 20
     }
+    
     
     private func setupTextFieldManager (){
         emailTextFiels.delegate = self

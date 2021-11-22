@@ -74,14 +74,9 @@ class SignUpController: UIViewController {
                     self.performSegue(withIdentifier: "GoToHome", sender: self)
                 }
             }
-            
-            
-            
-            
-            
-        } else {
+           } else {
             print("erreur, les champs ne sont pas complets")
-        }
+           }
     }
     
     
